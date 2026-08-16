@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YAJOO — Musician & Producer</title>
+    <link rel="stylesheet" href="style/home.css" />
+    <!-- Google Fonts for typography pairing -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Left Sticky Navigation Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">YAJOO</div>
+      <nav class="nav-menu">
+        <a href="home.html" class="nav-item active">HOME</a>
+        <a href="project.html" class="nav-item">PROJECT</a>
+        <a href="gallery.html" class="nav-item">GALLERY</a>
+        <a href="contact.html" class="nav-item">CONTACT</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content Container -->
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section id="home" class="hero-section">
+        <div class="hero-text-container">
+          <span class="subtitle">MUSICIAN • PRODUCER</span>
+          <h1 class="hero-title">YAJOO</h1>
+          <p class="hero-desc">
+            Sound built from static and starlight — hushed piano confessionals
+            colliding with restless, full-band noise.
+          </p>
+          <a href="project.html" class="cta-link"
+            >EXPLORE MY WORLD <span class="arrow">→</span></a
+          >
+
+          <!-- Audio Wave Visualizer Placeholder -->
+          <div class="visualizer">
+            <span style="height: 15px"></span>
+            <span style="height: 25px"></span>
+            <span style="height: 10px"></span>
+            <span style="height: 35px"></span>
+            <span style="height: 20px"></span>
+            <span style="height: 40px"></span>
+            <span style="height: 15px"></span>
+          </div>
+        </div>
+
+        <!-- Hero Image Wrapper -->
+        <div class="hero-image-wrapper">
+          <div class="hero-img-placeholder">
+            <img src="image/a.jpg" alt="Yajoo Hero" />
+          </div>
+          <!-- Circular Stamp Graphic -->
+          <div class="circular-stamp">
+            <svg viewBox="0 0 100 100" width="120" height="120">
+              <path
+                id="circlePath"
+                d="M 50, 50 m -40, 0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0"
+                fill="transparent"
+              />
+              <text fill="#c5a880" font-size="7.5" letter-spacing="2">
+                <textPath href="#circlePath">
+                  MUSIC IS HOW I MAKE SENSE OF SILENCE •
+                </textPath>
+              </text>
+            </svg>
+            <div class="stamp-inner-text">Yajoo</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About / Studio Notes Section -->
+      <section id="about" class="about-section">
+        <div class="about-grid">
+          <div class="about-image-box">
+            <div class="img-placeholder square-img">
+              <img src="image/about.jpg" alt="Yajoo in Studio" />
+            </div>
+          </div>
+
+          <div class="about-text-box">
+            <span class="section-label">ABOUT ME</span>
+            <h2 class="serif-title">Notes from<br />the studio</h2>
+            <p class="body-text">
+              Yajoo makes music the way static settles into a song — part analog
+              warmth, part restless electricity. Raised on tape hiss and
+              late-night radio, the work moves between quiet,
+              unfinished-sounding demos and full-band noise, never staying in
+              one shape for long.
+            </p>
+            <p class="body-text highlight-text">
+              Every release starts as a voice memo, a loop, or a mistake worth
+              keeping.
+            </p>
+          </div>
+
+          <div class="about-meta-box">
+            <div class="meta-item">
+              <span class="meta-num">01</span>
+              <div>
+                <span class="meta-label">ROLE</span>
+                <span class="meta-val">Vocals, Production</span>
+              </div>
+            </div>
+            <div class="meta-item">
+              <span class="meta-num">02</span>
+              <div>
+                <span class="meta-label">GENRE</span>
+                <span class="meta-val">Indie / Alt-Pop</span>
+              </div>
+            </div>
+            <div class="meta-item">
+              <span class="meta-num">03</span>
+              <div>
+                <span class="meta-label">BASED</span>
+                <span class="meta-val">On tour, mostly</span>
+              </div>
+            </div>
+            <div class="meta-item">
+              <span class="meta-num">04</span>
+              <div>
+                <span class="meta-label">SINCE</span>
+                <span class="meta-val">2019</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Project Section -->
+      <section class="project-section">
+        <div class="project-grid">
+          <div class="project-info">
+            <div class="project-header">
+              <span class="tag-featured">FEATURED</span>
+            </div>
+            <h2 class="serif-title Large">Nightbus<br />Sessions</h2>
+            <p class="body-text">
+              Stripped-back live takes recorded on a moving bus, one city at a
+              time. No overdubs, no click track — just wheels on asphalt and a
+              condenser mic.
+            </p>
+          </div>
+
+          <div class="project-video-container">
+            <div class="img-placeholder rect-img"></div>
+            <div class="slider-arrows-row">
+              <button class="circ-arrow">←</button>
+              <button class="circ-arrow">→</button>
+            </div>
+            <div class="slider-dots">
+              <span class="dot active"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Gallery Section -->
+      <section id="gallery" class="gallery-section">
+        <div class="gallery-header">
+          <span class="section-label">GALLERY</span>
+          <a href="gallery.html" class="view-all-link">VIEW ALL →</a>
+        </div>
+        <div class="gallery-strip">
+          <div class="gallery-item item-sm">
+            <div class="img-placeholder"></div>
+          </div>
+          <div class="gallery-item item-md">
+            <div class="img-placeholder"></div>
+          </div>
+          <div class="gallery-item item-lg active-frame">
+            <div class="img-placeholder"></div>
+          </div>
+          <div class="gallery-item item-md">
+            <div class="img-placeholder"></div>
+          </div>
+          <div class="gallery-item item-sm">
+            <div class="img-placeholder"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="js/home.js"></script>
+  </body>
+</html>

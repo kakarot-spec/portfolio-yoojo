@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yajoo - Contact</title>
+    <link rel="stylesheet" href="style/contact.css" />
+    <!-- Google Fonts for Serif (headings) and Sans-serif (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Instrument+Serif:ital@1&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="logo">YAJOO</div>
+      <nav class="nav-menu">
+        <a href="home.html" class="nav-item">HOME</a>
+        <a href="project.html" class="nav-item">PROJECT</a>
+        <a href="gallery.html" class="nav-item">GALLERY</a>
+        <a href="contact.html" class="nav-item active">CONTACT</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Header Title -->
+      <header class="contact-header">
+        <h1>CONTACT</h1>
+      </header>
+
+      <!-- Form and Intro Grid -->
+      <section class="contact-grid">
+        <!-- Left Info Column -->
+        <div class="intro-col">
+          <span class="subtitle">LET'S WORK TOGETHER</span>
+          <h2>
+            Let's create <br />something <span class="script-text">Yajoo</span>
+          </h2>
+          <p>
+            Have a project in mind or just want to say hello? I'd love to hear
+            from you. Let's make something meaningful together.
+          </p>
+          <div class="decorative-line"></div>
+        </div>
+
+        <!-- Right Form Column -->
+        <div class="form-col">
+          <form action="#" class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">YOUR NAME</label>
+                <input type="text" id="name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">EMAIL ADDRESS</label>
+                <input type="email" id="email" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="subject">SUBJECT</label>
+              <input type="text" id="subject" required />
+            </div>
+            <div class="form-group">
+              <label for="message">YOUR MESSAGE</label>
+              <textarea id="message" rows="6" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">
+              SEND MESSAGE <span class="arrow">&rarr;</span>
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Footer Details Grid -->
+      <footer class="footer-grid">
+        <div class="footer-col-wrapper">
+          <div class="footer-col">
+            <h3>INFO</h3>
+            <p>Based in Kathmandu, Nepal</p>
+            <p>Available for projects worldwide</p>
+          </div>
+
+          <div class="footer-col">
+            <h3>EMAIL</h3>
+            <p>
+              <a href="mailto:hello@yajoo.music" class="email-link"
+                >hello@yajoo.music</a
+              >
+            </p>
+          </div>
+
+          <div class="footer-col">
+            <h3>FOLLOW</h3>
+            <ul class="social-links">
+              <li>
+                <a href="#"> <span class="icon">&#128247;</span> @yajoo </a>
+              </li>
+              <li>
+                <a href="#"> <span class="icon">&#9654;</span> Yajoo </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Profile Image Block -->
+        <div class="profile-image-container">
+          <!-- Replace path with your actual image file -->
+          <img
+            src="path-to-your-image.jpg"
+            alt="Yajoo Profile"
+            class="profile-img"
+          />
+        </div>
+
+        <!-- Copyright Notice -->
+        <div class="copyright">&copy; 2024 Yajoo. All rights reserved.</div>
+      </footer>
+    </main>
+  </body>
+</html>
