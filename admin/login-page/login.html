@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Login</title>
+
+    <link rel="stylesheet" href="login.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <script src="login.js" defer></script>
+  </head>
+
+  <body>
+    <main class="login-card">
+      <a href="../../pages/home.html" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i>
+        Back to page
+      </a>
+
+      <h1>Welcome back</h1>
+      <p class="subtitle">Sign in to continue to your account</p>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="email">Email address</label>
+
+          <div class="input-wrapper">
+            <i class="fa-regular fa-envelope input-icon"></i>
+
+            <input
+              type="email"
+              id="email"
+              placeholder="Enter your email"
+              autocomplete="email"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+
+          <div class="input-wrapper">
+            <i class="fa-solid fa-lock input-icon"></i>
+
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+              required
+            />
+
+            <button
+              type="button"
+              id="togglePassword"
+              class="toggle-password"
+              aria-label="Show password"
+            >
+              <i class="fa-regular fa-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-options">
+          <label class="checkbox-container">
+            <input type="checkbox" id="remember" />
+            <span class="checkmark"></span>
+            Remember me
+          </label>
+
+          <a href="/forgot-password" class="forgot-link"> Forgot password? </a>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          <span>Login</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </form>
+    </main>
+  </body>
+</html>

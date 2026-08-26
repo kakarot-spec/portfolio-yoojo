@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="admin.js" defer></script>
+</head>
+<body>
+  <div class="admin-panel">
+    <h2>Manage Card Content</h2>
+    
+    <div class="form-group">
+      <label for="imageInput">Upload Image</label>
+      <input type="file" id="imageInput" accept="image/*">
+      <button type="button" id="deleteImgBtn" class="danger-btn">Delete Image</button>
+    </div>
+
+    <div class="form-group">
+      <label for="textInput">Box Text</label>
+      <textarea id="textInput" rows="4" placeholder="Enter text for the right box..."></textarea>
+    </div>
+
+    <button type="button" id="saveBtn" class="primary-btn">Save Changes</button>
+  </div>
+</body>
+</html>
