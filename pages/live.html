@@ -3,18 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Minimal Card</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <title>Display Card</title>
+  <link rel="stylesheet" href="../style/live.css">
+  <script src="../js/live.js" defer></script>
 </head>
 <body>
+
   <div class="card-container">
     <div class="left-box" id="imageContainer">
       <p class="placeholder-text">No Image Uploaded</p>
     </div>
     <div class="right-box">
-      <p id="displayText">Your text content will appear here...</p>
+      <div class="content-wrapper">
+        <h2 id="displayTitle">Default Title</h2>
+        <p id="displayText">Your text content will appear here...</p>
+      </div>
     </div>
   </div>
+
 </body>
 </html>

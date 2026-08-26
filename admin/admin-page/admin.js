@@ -1,12 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
   const imageInput = document.getElementById("imageInput");
   const deleteImgBtn = document.getElementById("deleteImgBtn");
+  const titleInput = document.getElementById("titleInput");
   const textInput = document.getElementById("textInput");
   const saveBtn = document.getElementById("saveBtn");
 
   let base64Image = localStorage.getItem("cardImage") || "";
 
-  // Load existing text
+  // Load existing data into inputs
+  titleInput.value = localStorage.getItem("cardTitle") || "";
   textInput.value = localStorage.getItem("cardText") || "";
 
   // Convert uploaded image to Base64
@@ -21,12 +23,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Delete image option
+  // Delete Image
   deleteImgBtn.addEventListener("click", () => {
     base64Image = "";
     imageInput.value = "";
     localStorage.removeItem("cardImage");
-    alert("Image cleared.");
+    alert("Image cleared!");
   });
 
   // Save changes to localStorage
@@ -34,7 +36,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (base64Image) {
       localStorage.setItem("cardImage", base64Image);
     }
+    localStorage.setItem("cardTitle", titleInput.value.trim());
     localStorage.setItem("cardText", textInput.value.trim());
+
     alert("Card updated successfully!");
   });
 });

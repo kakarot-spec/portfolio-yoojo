@@ -1,9 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   const imageContainer = document.getElementById("imageContainer");
+  const displayTitle = document.getElementById("displayTitle");
   const displayText = document.getElementById("displayText");
 
   function loadContent() {
     const savedImage = localStorage.getItem("cardImage");
+    const savedTitle = localStorage.getItem("cardTitle");
     const savedText = localStorage.getItem("cardText");
 
     // Render Image
@@ -13,12 +15,11 @@ document.addEventListener("DOMContentLoaded", () => {
       imageContainer.innerHTML = `<p class="placeholder-text">No Image Uploaded</p>`;
     }
 
-    // Render Text
-    if (savedText) {
-      displayText.textContent = savedText;
-    }
+    // Render Title & Text
+    displayTitle.textContent = savedTitle || "Default Title";
+    displayText.textContent = savedText || "Your text content will appear here...";
   }
 
   loadContent();
-  window.addEventListener("storage", loadContent); // Syncs live when changed in admin tab
+  window.addEventListener("storage", loadContent);
 });

@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard</title>
+  <title>Admin Panel</title>
   <link rel="stylesheet" href="style.css">
   <script src="admin.js" defer></script>
 </head>
 <body>
+
   <div class="admin-panel">
     <h2>Manage Card Content</h2>
     
@@ -18,11 +19,17 @@
     </div>
 
     <div class="form-group">
-      <label for="textInput">Box Text</label>
-      <textarea id="textInput" rows="4" placeholder="Enter text for the right box..."></textarea>
+      <label for="titleInput">Card Title</label>
+      <input type="text" id="titleInput" placeholder="Enter title for right box...">
+    </div>
+
+    <div class="form-group">
+      <label for="textInput">Card Context / Description</label>
+      <textarea id="textInput" rows="5" placeholder="Enter main paragraph text..."></textarea>
     </div>
 
     <button type="button" id="saveBtn" class="primary-btn">Save Changes</button>
   </div>
+
 </body>
 </html>
