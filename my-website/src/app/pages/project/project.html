@@ -17,7 +17,6 @@
 
   <div class="slider-controls">
     <button class="arrow-btn" (click)="prevProject()" aria-label="Previous Page">↑</button>
-    <!-- Dynamically update the sidebar counter -->
     <div class="page-indicator" [innerHTML]="currentProject.num + ' <span>/ 06</span>'"></div>
     <button class="arrow-btn" (click)="nextProject()" aria-label="Next Page">↓</button>
   </div>
@@ -47,7 +46,8 @@
     <div class="project-details">
       <div class="details-content">
         <span class="project-tag">{{ currentProject.tag }}</span>
-        <h2 class="project-title">{{ currentProject.title }}</h2>
+        <!-- Title using innerHTML to handle smooth line breaks without layout shifting -->
+        <h2 class="project-title" [innerHTML]="currentProject.title"></h2>
         <p class="project-desc">{{ currentProject.desc }}</p>
       </div>
 
@@ -84,11 +84,10 @@
   <!-- Bottom Thumbnail Strip Navigation -->
   <footer class="thumbnails-footer">
     <div class="thumbnails-grid">
-      <!-- Angular @for loop replaces 6 blocks of repetitive HTML -->
       @for (project of projects; track project.num; let i = $index) {
         <div class="thumb-card" [class.active]="i === activeIndex" (click)="selectProject(i)">
           <div class="thumb-img-wrapper">
-            <div class="img-placeholder"></div>
+            <div class="img-placeholder" [style.background-image]="project.gradient1"></div>
           </div>
           <div class="thumb-info">
             <span class="thumb-num">{{ project.num }}</span>

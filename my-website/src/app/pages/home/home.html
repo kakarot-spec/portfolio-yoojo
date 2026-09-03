@@ -4,23 +4,24 @@
 
   <nav class="nav-menu">
     <a
-      #navItem
       routerLink="/"
       class="nav-item"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
       >HOME</a
     >
-    <a #navItem routerLink="/project" class="nav-item" routerLinkActive="active">PROJECT</a>
-    <a #navItem routerLink="/gallery" class="nav-item" routerLinkActive="active">GALLERY</a>
-    <a #navItem routerLink="/contact" class="nav-item" routerLinkActive="active">CONTACT</a>
+    <a routerLink="/project" class="nav-item" routerLinkActive="active">PROJECT</a>
+    <a routerLink="/gallery" class="nav-item" routerLinkActive="active">GALLERY</a>
+    <a routerLink="/contact" class="nav-item" routerLinkActive="active">CONTACT</a>
   </nav>
 
   <!-- Sidebar Scroll Controls & Indicator -->
   <div class="slider-controls">
-    <button #upBtn class="arrow-btn">↑</button>
-    <div #pageIndicator class="page-indicator">01 <span>/ 04</span></div>
-    <button #downBtn class="arrow-btn">↓</button>
+    <button type="button" class="arrow-btn" (click)="scrollToAdjacentSection('up')">↑</button>
+    <div class="page-indicator">
+      {{ sectionIndexMap[currentSectionId] || '01' }} <span>/ 04</span>
+    </div>
+    <button type="button" class="arrow-btn" (click)="scrollToAdjacentSection('down')">↓</button>
   </div>
 </aside>
 
@@ -52,7 +53,7 @@
     <!-- Hero Image Wrapper -->
     <div class="hero-image-wrapper">
       <div class="hero-img-placeholder">
-        <img src="/assets/a.jpg" alt="Yajoo Hero" />
+        <img src="assets/a.jpg" alt="Yajoo Hero" />
       </div>
       <!-- Circular Stamp Graphic -->
       <div class="circular-stamp">
@@ -76,7 +77,7 @@
     <div class="about-grid">
       <div class="about-image-box">
         <div class="img-placeholder square-img">
-          <img src="/assets/about.jpg" alt="Yajoo in Studio" />
+          <img src="assets/about.jpg" alt="Yajoo in Studio" />
         </div>
       </div>
 
@@ -127,29 +128,35 @@
   </section>
 
   <!-- Featured Project Section -->
-  <section #section class="project-section">
+  <section #section id="project" class="project-section">
     <div class="project-grid">
       <div class="project-info">
         <div class="project-header">
           <span class="tag-featured">FEATURED</span>
         </div>
-        <h2 #titleEl class="serif-title Large">Nightbus<br />Sessions</h2>
-        <p #descEl class="body-text">
-          Stripped-back live takes recorded on a moving bus, one city at a time. No overdubs, no
-          click track — just wheels on asphalt and a condenser mic.
-        </p>
+        <h2 class="serif-title Large" [innerHTML]="slidesData[activeIndex].title"></h2>
+        <p class="body-text">{{ slidesData[activeIndex].desc }}</p>
       </div>
 
       <div class="project-video-container">
-        <div #projectMedia class="img-placeholder rect-img"></div>
+        <div
+          class="img-placeholder rect-img"
+          [style.backgroundImage]="'url(' + slidesData[activeIndex].image + ')'"
+          style="background-size: cover; background-position: center"
+        ></div>
+
         <div class="slider-arrows-row">
-          <button #projectPrevBtn class="circ-arrow">←</button>
-          <button #projectNextBtn class="circ-arrow">→</button>
+          <button type="button" class="circ-arrow" (click)="prevProject()">←</button>
+          <button type="button" class="circ-arrow" (click)="nextProject()">→</button>
         </div>
+
         <div class="slider-dots">
-          <!-- Modern Angular @for loop for dots -->
-          @for (dot of [0, 1, 2]; track dot) {
-            <span #projectDot class="dot" [class.active]="dot === activeIndex"></span>
+          @for (slide of slidesData; track $index) {
+            <span
+              class="dot"
+              [class.active]="$index === activeIndex"
+              (click)="setProject($index)"
+            ></span>
           }
         </div>
       </div>

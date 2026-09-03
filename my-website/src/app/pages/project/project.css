@@ -82,13 +82,15 @@
 
 /* --- Main Dashboard View --- */
 .projects-dashboard {
-  margin-left: 100px;
-  width: calc(100% - 100px);
-  padding: 40px 4% 30px 4%;
+  margin-left: 0;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+
+  padding: 40px 4% 30px calc(100px + 4%);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 100vh;
 }
 
 /* --- Dashboard Header --- */
@@ -119,11 +121,13 @@
 /* --- Main Showcase Area --- */
 .showcase-stage {
   display: grid;
+
   grid-template-columns: 1.4fr 1fr;
-  gap: 6%;
+  gap: 4%;
   align-items: center;
-  flex-grow: 1;
+  min-height: 480px;
   margin-bottom: 40px;
+  width: 100%;
 }
 
 /* Two Image Visual Panels */
@@ -131,11 +135,13 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+  width: 100%;
 }
 
 .panel {
   aspect-ratio: 4 / 5;
   width: 100%;
+  max-height: 480px;
   background-color: var(--card-black);
   overflow: hidden;
 }
@@ -156,7 +162,10 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  padding: 30px 0;
+  max-height: 480px;
+  position: relative;
+  padding: 10px 0;
+  width: 100%;
 }
 
 .project-tag {
@@ -165,26 +174,31 @@
   color: var(--accent-gold);
   display: block;
   margin-bottom: 18px;
+  height: 16px;
 }
 
 .project-title {
   font-family: var(--font-serif);
-  font-size: 4.8rem;
+  font-size: 4.2rem;
   font-weight: 400;
   line-height: 1.05;
   color: #eeeeee;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  min-height: 140px;
+  display: flex;
+  align-items: flex-start;
 }
 
 .project-desc {
   font-size: 0.95rem;
   line-height: 1.65;
-  color: var(--text-gray);
-  margin-bottom: 40px;
-  max-width: 440px;
-  font-weight: 300;
-}
+  color: var(--text-gray, #888888);
 
+  width: 100%;
+  min-height: 90px;
+  font-weight: 300;
+  margin: 0;
+}
 .view-project-link {
   color: var(--text-white);
   text-decoration: none;
@@ -199,10 +213,12 @@
 
 /* Carousel Control Circular Buttons */
 .carousel-nav {
+  position: absolute;
+  right: 0;
+  bottom: 0;
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  align-self: flex-end;
+  gap: 12px;
 }
 
 .circ-arrow {
@@ -297,6 +313,10 @@
   width: 100%;
 }
 
+.details-content {
+  display: flex;
+  flex-direction: column;
+}
 .prog-line.active {
   background-color: var(--accent-gold);
 }
