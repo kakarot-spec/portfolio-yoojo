@@ -1,0 +1,38 @@
+/* --- Global Resets & Theme Variables --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-color: #0b0b0b;
+  --panel-color: #0f0f0f;
+  --card-black: #0a0a0a; /* Added for project page */
+
+  --text-primary: #ffffff;
+  --text-white: #ffffff; /* Added alias */
+  --text-muted: #8e8e8e;
+  --text-gray: #8e8e8e; /* Added alias */
+
+  --accent-gold: #c5a880;
+
+  --border-color: #1c1c1c;
+  --border-dark: #1c1c1c; /* Added alias */
+
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-serif: 'Instrument Serif', serif;
+  --font-display: 'Cinzel', serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+}

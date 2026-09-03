@@ -1,0 +1,59 @@
+<!-- Left Sticky Sidebar Navigation -->
+<aside class="sidebar">
+  <div class="logo">YAJOO</div>
+
+  <nav class="nav-menu">
+    <a
+      routerLink="/"
+      class="nav-item"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >HOME</a
+    >
+    <a routerLink="/project" class="nav-item" routerLinkActive="active">PROJECT</a>
+    <a routerLink="/gallery" class="nav-item" routerLinkActive="active">GALLERY</a>
+    <a routerLink="/contact" class="nav-item" routerLinkActive="active">CONTACT</a>
+  </nav>
+</aside>
+
+<!-- Main Dashboard Body -->
+<main class="gallery-dashboard">
+  <!-- Header Section -->
+  <header class="gallery-header">
+    <h1 class="main-title">GALLERY</h1>
+    <div class="header-counter">{{ galleryItems.length }} ITEMS</div>
+  </header>
+
+  <!-- 2-Row Gallery Matrix -->
+  <section class="gallery-matrix">
+    @for (item of galleryItems; track item.id) {
+      <div class="gallery-card" (click)="cycleCard(item.id)">
+        <div class="deck-container">
+          <!-- Back Cards -->
+          <div
+            class="back-card card-tilt-left"
+            [style.background-image]="'url(' + getImage(item.id, 2) + ')'"
+          ></div>
+          <div
+            class="back-card card-tilt-right"
+            [style.background-image]="'url(' + getImage(item.id, 1) + ')'"
+          ></div>
+
+          <!-- Front Frame -->
+          <div class="front-card-frame">
+            <div
+              class="img-placeholder"
+              [style.background-image]="'url(' + getImage(item.id, 0) + ')'"
+            ></div>
+          </div>
+        </div>
+
+        <div class="card-meta">
+          <span class="card-num">{{ item.num }}</span>
+          <h3 class="card-title" [innerHTML]="item.title"></h3>
+          <div class="gold-dash"></div>
+        </div>
+      </div>
+    }
+  </section>
+</main>
