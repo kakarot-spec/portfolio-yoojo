@@ -1,0 +1,70 @@
+<app-nav-bar
+  [currentSectionId]="currentSectionId"
+  [sectionIndexMap]="sectionIndexMap"
+  (scrollDirection)="scrollToAdjacentSection($event)"
+>
+</app-nav-bar>
+<div class="live-wrapper">
+  <div class="book-container">
+    <button (click)="navigatePage(-1)" [disabled]="isFirstSpread" class="arrow-btn left-arrow">
+      ‹
+    </button>
+
+    <div class="book-card">
+      <div class="book-spine"></div>
+
+      <!-- Left Page -->
+      <div class="page-left">
+        <div class="image-box">
+          <ng-container *ngIf="currentEntry && currentEntry.imageUrl; else vectorFallback">
+            <img [src]="currentEntry.imageUrl" [alt]="currentEntry.title" />
+          </ng-container>
+          <ng-template #vectorFallback>
+            <div class="placeholder-art">🏛️</div>
+          </ng-template>
+        </div>
+
+        <div class="page-footer">
+          <span
+            >{{ entries.length === 0 ? '00' : formatNum(currentIndex * 2 + 1) }} /
+            {{ formatNum(totalSpreads * 2) }}</span
+          >
+        </div>
+      </div>
+
+      <!-- Right Page -->
+      <div class="page-right">
+        <ng-container *ngIf="currentEntry; else emptyState">
+          <div class="date-badge">
+            <span class="month">{{ currentEntry.month }}</span>
+            <span class="day-year">{{ currentEntry.dayYear }}</span>
+          </div>
+
+          <h1 class="title">{{ currentEntry.title }}</h1>
+          <div class="underline"></div>
+
+          <p class="story">{{ currentEntry.story }}</p>
+        </ng-container>
+
+        <ng-template #emptyState>
+          <div class="empty-notice">
+            <span class="month">NOTICE</span>
+            <h1 class="title">Nothing to see</h1>
+            <p class="story">There are no recorded stories in this journal.</p>
+          </div>
+        </ng-template>
+
+        <div class="page-footer right-footer">
+          <span
+            >{{ entries.length === 0 ? '00' : formatNum(currentIndex * 2 + 2) }} /
+            {{ formatNum(totalSpreads * 2) }}</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <button (click)="navigatePage(1)" [disabled]="isLastSpread" class="arrow-btn right-arrow">
+      ›
+    </button>
+  </div>
+</div>

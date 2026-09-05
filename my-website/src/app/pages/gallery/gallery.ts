@@ -1,5 +1,7 @@
-import { Component, HostListener } from '@angular/core'; // ✅ Correct import
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Component, HostListener, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { NavbarComponent } from '../../components/nav-bar/nav-bar';
 
 interface GalleryItem {
   id: number;
@@ -11,11 +13,21 @@ interface GalleryItem {
 @Component({
   selector: 'app-gallery',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [NavbarComponent],
   templateUrl: './gallery.html',
   styleUrl: './gallery.css',
 })
 export class GalleryComponent {
+  private isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+
+  currentSectionId = 'gallery';
+  sectionIndexMap: Record<string, string> = {
+    home: '01',
+    about: '02',
+    project: '03',
+    gallery: '04',
+  };
+
   galleryItems: GalleryItem[] = [
     {
       id: 1,
@@ -87,9 +99,14 @@ export class GalleryComponent {
     this.activeIndexes[cardId] = (current + 1) % 3;
   }
 
-  // ✅ Correct usage of @HostListener with document: prefix
+  scrollToAdjacentSection(direction: 'up' | 'down'): void {
+    console.log(`Scroll action: ${direction}`);
+  }
+
   @HostListener('document:mousemove', ['$event'])
   onMouseMove(event: MouseEvent): void {
+    if (!this.isBrowser) return; // Prevent SSR hanging
+
     const target = event.target as HTMLElement;
     const deck = target.closest('.deck-container');
 
@@ -119,6 +136,8 @@ export class GalleryComponent {
 
   @HostListener('document:mouseleave', ['$event'])
   onMouseLeave(event: MouseEvent): void {
+    if (!this.isBrowser) return; // Prevent SSR hanging
+
     const target = event.target as HTMLElement;
     const deck = target.closest('.deck-container');
 

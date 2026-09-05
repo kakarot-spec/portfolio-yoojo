@@ -3,25 +3,25 @@ import {
   AfterViewInit,
   HostListener,
   ElementRef,
-  ViewChild,
   ViewChildren,
   QueryList,
   OnDestroy,
   PLATFORM_ID,
   Inject,
 } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
+import { NavbarComponent } from '../../components/nav-bar/nav-bar';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, NavbarComponent],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
 export class HomeComponent implements AfterViewInit, OnDestroy {
-  sectionIndexMap: { [key: string]: string } = {
+  sectionIndexMap: Record<string, string> = {
     home: '01',
     about: '02',
     gallery: '03',

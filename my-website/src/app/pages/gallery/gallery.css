@@ -1,69 +1,27 @@
-/* --- Global Reset & Page Setup --- */
+/* --- Global Host Setup --- */
 :host {
   display: block;
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
-/* --- Left Sidebar Structure --- */
-.sidebar {
-  width: 100px;
-  background-color: #030303;
-  border-right: 1px solid var(--border-dark, #1a1a1a);
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 40px 0;
-  z-index: 100;
+/* --- Layout Container Fixes --- */
+.main-content {
+  margin-left: 160px !important;
+  width: calc(100vw - 160px) !important;
+  max-width: none !important;
+  min-height: 100vh;
   box-sizing: border-box;
 }
 
-.logo {
-  font-family: var(--font-display, sans-serif);
-  font-size: 1.5rem;
-  color: var(--border-gold, #c5a880);
-  letter-spacing: 2px;
-}
-
-.nav-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 45px;
-}
-
-.nav-item {
-  font-size: 0.7rem;
-  letter-spacing: 3px;
-  text-decoration: none;
-  color: var(--text-gray, #888888);
-  writing-mode: vertical-lr;
-  transform: rotate(180deg);
-  transition: color 0.3s;
-}
-
-.nav-item:hover,
-.nav-item.active {
-  color: var(--border-gold, #c5a880);
-}
-
-/* --- Main Gallery Workspace --- */
 .gallery-dashboard {
-  width: calc(100vw - 100px) !important;
+  margin-left: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
   min-height: 100vh;
-
-  margin-left: 100px !important;
-  padding: 40px 4% 60px !important;
-
+  padding: 40px 6% 60px 6% !important;
   box-sizing: border-box;
-
   display: flex;
   flex-direction: column;
 }
@@ -73,24 +31,21 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-
-  width: 100%;
-
+  width: 100% !important;
   border-bottom: 1px solid var(--border-dark, #1a1a1a);
-
-  padding-bottom: 15px;
-  margin-bottom: 45px;
-
+  padding-bottom: 20px;
+  margin-bottom: 40px;
   box-sizing: border-box;
 }
 
 .main-title {
   font-family: var(--font-display, sans-serif);
-  font-size: 4.5rem;
+  font-size: clamp(3.5rem, 6vw, 5.5rem);
   font-weight: 400;
   letter-spacing: -1px;
-  line-height: 0.85;
+  line-height: 0.9;
   margin: 0;
+  color: #dedede;
 }
 
 .header-counter {
@@ -101,14 +56,10 @@
 
 /* --- Gallery Fluid Grid Matrix --- */
 .gallery-matrix {
-  display: grid;
-
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-
-  column-gap: 30px;
-  row-gap: 50px;
-
-  width: 100%;
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 50px 35px !important;
+  width: 100% !important;
   box-sizing: border-box;
 }
 
@@ -116,9 +67,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-
   width: 100%;
-
   cursor: pointer;
   box-sizing: border-box;
 }
@@ -126,61 +75,48 @@
 /* --- Overlapping Stack Deck Container --- */
 .deck-container {
   position: relative;
-
   width: 100%;
-  aspect-ratio: 1 / 1.1;
-
-  margin-bottom: 20px;
+  aspect-ratio: 3 / 4;
+  margin-bottom: 18px;
 }
 
 /* --- Stack Layers Base Styles --- */
 .back-card,
 .front-card-frame {
   position: absolute;
-
-  width: 86%;
+  width: 88%;
   height: 92%;
-
-  left: 7%;
+  left: 6%;
   top: 4%;
-
   background-color: #0b0b0b;
 }
 
 /* --- Background Card Outlines --- */
 .back-card {
   border: 1px solid #1a1a1a;
-
   z-index: 1;
   pointer-events: none;
-
   background-size: cover;
   background-position: center;
-
   box-sizing: border-box;
 }
 
 /* --- Deck Custom Rotation Shifts --- */
 .card-tilt-left {
-  transform: rotate(-3.5deg) translate(-2px, 1px);
+  transform: rotate(-3deg) translate(-2px, 1px);
 }
 
 .card-tilt-right {
-  transform: rotate(3.5deg) translate(2px, -1px);
+  transform: rotate(3deg) translate(2px, -1px);
 }
 
 /* --- Primary Top Frame Layer --- */
 .front-card-frame {
   border: 1px solid var(--border-gold, #c5a880);
-
   padding: 6px;
-
   z-index: 3;
-
   transform: rotate(0deg);
-
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
   box-sizing: border-box;
 }
 
@@ -192,10 +128,8 @@
 .img-placeholder {
   width: 100%;
   height: 100%;
-
   background-color: #121212;
   background-image: linear-gradient(180deg, #121212 0%, #181818 100%);
-
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -204,43 +138,35 @@
 /* --- Card Subtitle Info Layout --- */
 .card-meta {
   width: 100%;
-
-  padding-left: 7%;
-
+  padding-left: 6%;
   box-sizing: border-box;
 }
 
 .card-num {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 600;
-
   color: var(--border-gold, #c5a880);
-
   display: block;
-
   margin-bottom: 6px;
 }
 
 .card-title {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 500;
-
   letter-spacing: 1.5px;
   line-height: 1.4;
-
   text-transform: uppercase;
-
   color: var(--text-white, #ffffff);
-
   margin: 0 0 10px 0;
-
-  min-height: 32px;
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  min-height: 38px;
 }
 
 .gold-dash {
-  width: 15px;
+  width: 20px;
   height: 1px;
-
   background-color: var(--border-gold, #c5a880);
 }
 
@@ -248,73 +174,37 @@
    RESPONSIVE LAYOUT
 ========================================= */
 
-/* --- Large Desktop --- */
-@media (max-width: 1300px) {
+@media (max-width: 1200px) {
   .gallery-matrix {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(3, 1fr) !important;
   }
 }
 
-/* --- Tablet / Smaller Desktop --- */
 @media (max-width: 900px) {
   .gallery-matrix {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 }
 
-/* --- Mobile --- */
 @media (max-width: 768px) {
-  .sidebar {
-    width: 100%;
-    height: 60px;
-
-    position: relative;
-
-    top: auto;
-    left: auto;
-    bottom: auto;
-
-    flex-direction: row;
-
-    padding: 0 20px;
-
-    box-sizing: border-box;
-  }
-
-  .nav-menu {
-    flex-direction: row;
-    gap: 20px;
-  }
-
-  .nav-item {
-    writing-mode: horizontal-tb;
-    transform: rotate(0deg);
+  .main-content {
+    margin-left: 0 !important;
+    width: 100% !important;
   }
 
   .gallery-dashboard {
-    width: 100vw !important;
-
-    margin-left: 0 !important;
-
     padding: 20px 4% 40px !important;
-
-    box-sizing: border-box;
   }
 
   .main-title {
-    font-size: 3.2rem;
+    font-size: 3rem;
   }
 }
 
-/* --- Small Mobile --- */
 @media (max-width: 480px) {
   .gallery-matrix {
-    grid-template-columns: 1fr;
-    row-gap: 40px;
-  }
-
-  .deck-container {
-    width: 100%;
+    grid-template-columns: 1fr !important;
+    row-gap: 30px !important;
   }
 
   .card-meta {
@@ -323,6 +213,6 @@
   }
 
   .gold-dash {
-    margin: 10px auto 0 auto;
+    margin: 8px auto 0 auto;
   }
 }

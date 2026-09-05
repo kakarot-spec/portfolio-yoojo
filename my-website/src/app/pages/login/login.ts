@@ -1,30 +1,42 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
+import { Component, inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule], // Required for [(ngModel)]
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
 export class LoginComponent {
-  username = '';
-  password = '';
-  errorMessage = '';
+  private fb = inject(FormBuilder);
+  private router = inject(Router);
+  private platformId = inject(PLATFORM_ID);
 
-  constructor(
-    private authService: AuthService,
-    private router: Router,
-  ) {}
+  errorMessage: string = '';
 
-  onSubmit() {
-    if (this.authService.login(this.username, this.password)) {
-      this.router.navigate(['/admin']); // Redirect to admin on success
+  loginForm: FormGroup = this.fb.group({
+    username: ['', Validators.required],
+    password: ['', Validators.required],
+  });
+
+  onSubmit(): void {
+    if (this.loginForm.invalid) {
+      return;
+    }
+
+    const { password } = this.loginForm.value;
+
+    if (password === 'admin123') {
+      if (isPlatformBrowser(this.platformId)) {
+        localStorage.setItem('isAdminLoggedIn', 'true');
+      }
+      this.errorMessage = '';
+      this.router.navigate(['/admin']);
     } else {
-      this.errorMessage = 'Invalid username or password. Try admin / admin123';
+      this.errorMessage = 'Incorrect username or password.';
     }
   }
 }

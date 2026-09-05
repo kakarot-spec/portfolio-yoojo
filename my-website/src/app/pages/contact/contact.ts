@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FormsModule, NgForm } from '@angular/forms';
+import { NavbarComponent } from '../../components/nav-bar/nav-bar';
 
 interface ContactFormData {
   name: string;
@@ -12,11 +12,21 @@ interface ContactFormData {
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, FormsModule], // ✅ FormsModule enables ngModel
+  imports: [FormsModule, NavbarComponent], // Removed unused RouterLink & RouterLinkActive
   templateUrl: './contact.html',
   styleUrl: './contact.css',
 })
 export class ContactComponent {
+  // Required bindings for NavbarComponent
+  currentSectionId = 'contact';
+  sectionIndexMap: Record<string, string> = {
+    home: '01',
+    about: '02',
+    project: '03',
+    gallery: '04',
+    contact: '05',
+  };
+
   formData: ContactFormData = {
     name: '',
     email: '',
@@ -30,16 +40,17 @@ export class ContactComponent {
     if (form.valid) {
       console.log('Form Submitted:', this.formData);
 
-      // TODO: Replace this with actual API call or EmailJS integration
-      // await this.contactService.sendMessage(this.formData);
-
       this.isSubmitted = true;
       form.resetForm();
 
-      // Hide success message after 5 seconds
       setTimeout(() => {
         this.isSubmitted = false;
       }, 5000);
     }
+  }
+
+  // Handler for (scrollDirection) event emitted by NavbarComponent
+  scrollToAdjacentSection(direction: 'up' | 'down'): void {
+    console.log(`Scroll action triggered: ${direction}`);
   }
 }

@@ -6,7 +6,7 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class AuthService {
   private readonly VALID_USER = 'admin';
-  private readonly VALID_PASS = 'admin123';
+  private readonly VALID_PASS = 'password123';
   private isBrowser: boolean;
 
   constructor(@Inject(PLATFORM_ID) platformId: Object) {
@@ -15,14 +15,18 @@ export class AuthService {
 
   login(username: string, password: string): boolean {
     if (username === this.VALID_USER && password === this.VALID_PASS) {
-      if (this.isBrowser) localStorage.setItem('isLoggedIn', 'true');
+      if (this.isBrowser) {
+        localStorage.setItem('isLoggedIn', 'true');
+      }
       return true;
     }
     return false;
   }
 
   logout(): void {
-    if (this.isBrowser) localStorage.removeItem('isLoggedIn');
+    if (this.isBrowser) {
+      localStorage.removeItem('isLoggedIn');
+    }
   }
 
   isLoggedIn(): boolean {

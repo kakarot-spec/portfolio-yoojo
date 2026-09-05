@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink } from '@angular/router';
+import { NavbarComponent } from '../../components/nav-bar/nav-bar';
 
 interface Project {
   num: string;
@@ -13,11 +14,20 @@ interface Project {
 @Component({
   selector: 'app-project',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [NavbarComponent],
   templateUrl: './project.html',
   styleUrl: './project.css',
 })
 export class ProjectComponent {
+  // Required bindings for NavbarComponent
+  currentSectionId = 'project';
+  sectionIndexMap: Record<string, string> = {
+    home: '01',
+    about: '02',
+    project: '03',
+    gallery: '04',
+  };
+
   projects: Project[] = [
     {
       num: '01',
@@ -69,10 +79,8 @@ export class ProjectComponent {
     },
   ];
 
-  // Start at index 1 (Project '02' active by default)
   activeIndex = 1;
 
-  // This getter always returns the currently active project data
   get currentProject(): Project {
     return this.projects[this.activeIndex];
   }
@@ -87,5 +95,14 @@ export class ProjectComponent {
 
   selectProject(index: number): void {
     this.activeIndex = index;
+  }
+
+  // Required handler for (scrollDirection) event emitted by NavbarComponent
+  scrollToAdjacentSection(direction: 'up' | 'down'): void {
+    if (direction === 'down') {
+      this.nextProject();
+    } else {
+      this.prevProject();
+    }
   }
 }

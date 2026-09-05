@@ -1,93 +1,21 @@
-/* --- Left Sidebar Structure --- */
-.sidebar {
-  width: 100px;
-  background-color: #030303;
-  border-right: 1px solid var(--border-dark);
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 40px 0;
-  z-index: 100;
-}
-
-.logo {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  color: var(--accent-gold);
-  letter-spacing: 2px;
-}
-
-.nav-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 45px;
-}
-
-.nav-item {
-  font-size: 0.7rem;
-  letter-spacing: 3px;
-  text-decoration: none;
-  color: var(--text-gray);
-  writing-mode: vertical-lr;
-  transform: rotate(180deg);
-  transition: color 0.3s;
-}
-
-.nav-item:hover,
-.nav-item.active {
-  color: var(--accent-gold);
-}
-
-.slider-controls {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-}
-
-.arrow-btn {
-  background: transparent;
-  border: 1px solid var(--border-dark);
-  color: var(--text-gray);
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  cursor: pointer;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-}
-
-.arrow-btn:hover {
-  border-color: var(--accent-gold);
-  color: var(--accent-gold);
-}
-
-.page-indicator {
-  font-size: 0.85rem;
-  color: var(--text-white);
-  text-align: center;
-  line-height: 1.4;
-}
-
-.page-indicator span {
-  color: var(--text-gray);
+:host {
   display: block;
-  font-size: 0.7rem;
+  width: 100%;
+}
+
+.main-content {
+  margin-left: 160px;
+  width: calc(100% - 160px);
+  min-height: 100vh;
 }
 
 /* --- Main Dashboard View --- */
 .projects-dashboard {
-  margin-left: 0;
+  margin-left: 0; /* Fixed: Removed 240px margin that caused the huge gap */
   width: 100%;
   min-height: 100vh;
   box-sizing: border-box;
-
-  padding: 40px 4% 30px calc(100px + 4%);
+  padding: 40px 5% 30px 5%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -98,14 +26,14 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  border-bottom: 1px solid var(--border-dark);
+  border-bottom: 1px solid var(--border-dark, rgba(255, 255, 255, 0.08));
   padding-bottom: 15px;
   margin-bottom: 30px;
 }
 
 .main-title {
   font-family: var(--font-display);
-  font-size: 4.5rem;
+  font-size: 3.8rem;
   font-weight: 400;
   letter-spacing: -1px;
   line-height: 0.85;
@@ -121,12 +49,11 @@
 /* --- Main Showcase Area --- */
 .showcase-stage {
   display: grid;
-
-  grid-template-columns: 1.4fr 1fr;
-  gap: 4%;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 40px;
   align-items: center;
-  min-height: 480px;
-  margin-bottom: 40px;
+  min-height: 420px;
+  margin-bottom: 30px;
   width: 100%;
 }
 
@@ -134,15 +61,15 @@
 .visual-panels {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 16px;
   width: 100%;
 }
 
 .panel {
   aspect-ratio: 4 / 5;
   width: 100%;
-  max-height: 480px;
-  background-color: var(--card-black);
+  max-height: 420px;
+  background-color: var(--card-black, #111);
   overflow: hidden;
 }
 
@@ -162,7 +89,7 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  max-height: 480px;
+  max-height: 420px;
   position: relative;
   padding: 10px 0;
   width: 100%;
@@ -173,34 +100,32 @@
   letter-spacing: 3px;
   color: var(--accent-gold);
   display: block;
-  margin-bottom: 18px;
+  margin-bottom: 12px;
   height: 16px;
 }
 
 .project-title {
   font-family: var(--font-serif);
-  font-size: 4.2rem;
+  font-size: 3.5rem;
   font-weight: 400;
   line-height: 1.05;
   color: #eeeeee;
-  margin-bottom: 20px;
-  min-height: 140px;
+  margin-bottom: 15px;
   display: flex;
   align-items: flex-start;
 }
 
 .project-desc {
-  font-size: 0.95rem;
-  line-height: 1.65;
+  font-size: 0.9rem;
+  line-height: 1.6;
   color: var(--text-gray, #888888);
-
   width: 100%;
-  min-height: 90px;
   font-weight: 300;
   margin: 0;
 }
+
 .view-project-link {
-  color: var(--text-white);
+  color: var(--text-white, #fff);
   text-decoration: none;
   font-size: 0.75rem;
   letter-spacing: 3px;
@@ -223,10 +148,10 @@
 
 .circ-arrow {
   background: transparent;
-  border: 1px solid var(--border-dark);
-  color: var(--text-white);
-  width: 48px;
-  height: 48px;
+  border: 1px solid var(--border-dark, rgba(255, 255, 255, 0.2));
+  color: var(--text-white, #fff);
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
@@ -244,7 +169,7 @@
 .thumbnails-footer {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
 }
 
 .thumbnails-grid {
@@ -262,7 +187,7 @@
 .thumb-img-wrapper {
   aspect-ratio: 1.45 / 1;
   overflow: hidden;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   border: 1px solid transparent;
 }
 
@@ -275,19 +200,19 @@
 }
 
 .thumb-num {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: var(--accent-gold);
   font-weight: 500;
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .thumb-title {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   letter-spacing: 1px;
   font-weight: 600;
   text-transform: uppercase;
-  color: var(--text-white);
+  color: var(--text-white, #fff);
   margin-bottom: 2px;
   white-space: nowrap;
   overflow: hidden;
@@ -296,7 +221,7 @@
 
 .thumb-meta {
   font-size: 0.65rem;
-  color: var(--text-gray);
+  color: var(--text-gray, #888888);
   text-transform: uppercase;
 }
 
@@ -317,6 +242,7 @@
   display: flex;
   flex-direction: column;
 }
+
 .prog-line.active {
   background-color: var(--accent-gold);
 }
@@ -325,7 +251,7 @@
 @media (max-width: 1100px) {
   .showcase-stage {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 30px;
   }
   .project-details {
     flex-direction: row;
@@ -334,46 +260,21 @@
   .carousel-nav {
     flex-direction: row;
   }
-  .thumbnails-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  .thumbnails-grid,
   .slider-progress-bar {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  body {
-    flex-direction: column;
-  }
-  .sidebar {
-    width: 100%;
-    height: 60px;
-    position: relative;
-    flex-direction: row;
-    padding: 0 20px;
-  }
-  .nav-menu {
-    flex-direction: row;
-    gap: 20px;
-  }
-  .nav-item {
-    writing-mode: horizontal-tb;
-    transform: rotate(0deg);
-  }
-  .slider-controls {
-    display: none;
-  }
-  .projects-dashboard {
+  .main-content {
     margin-left: 0;
     width: 100%;
   }
   .project-title {
-    font-size: 3.2rem;
+    font-size: 2.8rem;
   }
-  .thumbnails-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .thumbnails-grid,
   .slider-progress-bar {
     grid-template-columns: repeat(2, 1fr);
   }

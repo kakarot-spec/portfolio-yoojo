@@ -1,29 +1,9 @@
-<!-- Left Sticky Navigation Sidebar -->
-<aside class="sidebar">
-  <div class="logo">YAJOO</div>
-
-  <nav class="nav-menu">
-    <a
-      routerLink="/"
-      class="nav-item"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-      >HOME</a
-    >
-    <a routerLink="/project" class="nav-item" routerLinkActive="active">PROJECT</a>
-    <a routerLink="/gallery" class="nav-item" routerLinkActive="active">GALLERY</a>
-    <a routerLink="/contact" class="nav-item" routerLinkActive="active">CONTACT</a>
-  </nav>
-
-  <!-- Sidebar Scroll Controls & Indicator -->
-  <div class="slider-controls">
-    <button type="button" class="arrow-btn" (click)="scrollToAdjacentSection('up')">↑</button>
-    <div class="page-indicator">
-      {{ sectionIndexMap[currentSectionId] || '01' }} <span>/ 04</span>
-    </div>
-    <button type="button" class="arrow-btn" (click)="scrollToAdjacentSection('down')">↓</button>
-  </div>
-</aside>
+<app-nav-bar
+  [currentSectionId]="currentSectionId"
+  [sectionIndexMap]="sectionIndexMap"
+  (scrollDirection)="scrollToAdjacentSection($event)"
+>
+</app-nav-bar>
 
 <!-- Main Content Container -->
 <main class="main-content">
