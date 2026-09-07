@@ -4,141 +4,175 @@
   (scrollDirection)="scrollToAdjacentSection($event)"
 >
 </app-nav-bar>
-<!-- Main Content Area -->
+
 <main class="main-content">
-  <!-- Header Title -->
-  <header class="contact-header">
-    <h1>CONTACT</h1>
-  </header>
-
-  <!-- Form and Intro Grid -->
-  <section class="contact-grid">
-    <!-- Left Info Column -->
+  <div class="contact-wrapper">
+    <!-- Left Column: Intro -->
     <div class="intro-col">
-      <span class="subtitle">LET'S WORK TOGETHER</span>
-      <h2>Let's create <br />something <span class="script-text">Yajoo</span></h2>
-      <p>
-        Have a project in mind or just want to say hello? I'd love to hear from you. Let's make
-        something meaningful together.
+      <div class="subtitle-wrapper">
+        <span class="subtitle">GET IN TOUCH</span>
+        <div class="decorative-line-top"></div>
+      </div>
+
+      <h1 class="main-title">Contact</h1>
+
+      <h2 class="heading-tagline">
+        Let's create<br />
+        something <span class="script-text">Yajoo</span>
+      </h2>
+
+      <p class="description">
+        Have a project in mind or just want to say hello?<br />
+        I'd love to hear from you. Let's make something<br />
+        meaningful together.
       </p>
-      <div class="decorative-line"></div>
+
+      <div class="decorative-line-bottom"></div>
     </div>
 
-    <!-- Right Form Column -->
+    <!-- Right Column: Card & Form -->
     <div class="form-col">
-      <!-- Use (ngSubmit) instead of action="#" -->
-      <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" class="contact-form">
-        <div class="form-row">
+      <div class="form-card">
+        <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">YOUR NAME</label>
+              <div class="input-container">
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Enter your name"
+                  [(ngModel)]="formData.name"
+                  required
+                  #nameField="ngModel"
+                />
+                <span class="input-icon">&#128100;</span>
+              </div>
+              @if (nameField.invalid && nameField.touched) {
+                <small class="error-msg">Name is required</small>
+              }
+            </div>
+
+            <div class="form-group">
+              <label for="email">EMAIL ADDRESS</label>
+              <div class="input-container">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  [(ngModel)]="formData.email"
+                  required
+                  email
+                  #emailField="ngModel"
+                />
+                <span class="input-icon">&#9993;</span>
+              </div>
+              @if (emailField.invalid && emailField.touched) {
+                <small class="error-msg">Valid email is required</small>
+              }
+            </div>
+          </div>
+
           <div class="form-group">
-            <label for="name">YOUR NAME</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              [(ngModel)]="formData.name"
-              required
-              #nameField="ngModel"
-            />
-            @if (nameField.invalid && nameField.touched) {
-              <small class="error-msg">Name is required</small>
+            <label for="subject">SUBJECT</label>
+            <div class="input-container">
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                placeholder="Select or enter subject"
+                [(ngModel)]="formData.subject"
+                required
+                #subjectField="ngModel"
+              />
+              <span class="input-icon">&#128317;</span>
+            </div>
+            @if (subjectField.invalid && subjectField.touched) {
+              <small class="error-msg">Subject is required</small>
             }
           </div>
 
           <div class="form-group">
-            <label for="email">EMAIL ADDRESS</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              [(ngModel)]="formData.email"
-              required
-              email
-              #emailField="ngModel"
-            />
-            @if (emailField.invalid && emailField.touched) {
-              <small class="error-msg">Valid email is required</small>
+            <label for="message">YOUR MESSAGE</label>
+            <div class="input-container">
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                placeholder="Type your message here..."
+                [(ngModel)]="formData.message"
+                required
+                #messageField="ngModel"
+              ></textarea>
+              <span class="input-icon icon-top">&#10002;</span>
+            </div>
+            @if (messageField.invalid && messageField.touched) {
+              <small class="error-msg">Message is required</small>
             }
           </div>
-        </div>
 
-        <div class="form-group">
-          <label for="subject">SUBJECT</label>
-          <input
-            type="text"
-            id="subject"
-            name="subject"
-            [(ngModel)]="formData.subject"
-            required
-            #subjectField="ngModel"
-          />
-          @if (subjectField.invalid && subjectField.touched) {
-            <small class="error-msg">Subject is required</small>
+          <div class="btn-wrapper">
+            <button type="submit" class="submit-btn" [disabled]="contactForm.invalid">
+              SEND MESSAGE <span class="arrow">&rarr;</span>
+            </button>
+          </div>
+
+          @if (isSubmitted) {
+            <p class="success-msg">✨ Message sent successfully! I'll get back to you soon.</p>
           }
-        </div>
-
-        <div class="form-group">
-          <label for="message">YOUR MESSAGE</label>
-          <textarea
-            id="message"
-            name="message"
-            rows="6"
-            [(ngModel)]="formData.message"
-            required
-            #messageField="ngModel"
-          ></textarea>
-          @if (messageField.invalid && messageField.touched) {
-            <small class="error-msg">Message is required</small>
-          }
-        </div>
-
-        <button type="submit" class="submit-btn" [disabled]="contactForm.invalid">
-          SEND MESSAGE <span class="arrow">&rarr;</span>
-        </button>
-
-        <!-- Success Message Feedback -->
-        @if (isSubmitted) {
-          <p class="success-msg">✨ Message sent successfully! I'll get back to you soon.</p>
-        }
-      </form>
+        </form>
+      </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Footer Details Grid -->
+  <!-- Footer Section -->
   <footer class="footer-grid">
-    <div class="footer-col-wrapper">
-      <div class="footer-col">
+    <div class="footer-col">
+      <div class="footer-col-header">
+        <span class="footer-icon">&#128205;</span>
         <h3>INFO</h3>
-        <p>Based in Kathmandu, Nepal</p>
-        <p>Available for projects worldwide</p>
       </div>
+      <p>Based in Kathmandu, Nepal</p>
+      <p>Available for projects worldwide</p>
+    </div>
 
-      <div class="footer-col">
+    <div class="footer-col">
+      <div class="footer-col-header">
+        <span class="footer-icon">&#9993;</span>
         <h3>EMAIL</h3>
-        <p>
-          <a href="mailto:hello@yajoo.music" class="email-link">hello@yajoo.music</a>
-        </p>
       </div>
+      <p><a href="mailto:hello@yajoo.music" class="email-link">hello@yajoo.music</a></p>
+    </div>
 
-      <div class="footer-col">
+    <div class="footer-col">
+      <div class="footer-col-header">
         <h3>FOLLOW</h3>
-        <ul class="social-links">
-          <li>
-            <a href="#"><span class="icon">&#128247;</span> @yajoo</a>
-          </li>
-          <li>
-            <a href="#"><span class="icon">&#9654;</span> Yajoo</a>
-          </li>
-        </ul>
       </div>
+      <ul class="social-links">
+        <li>
+          <a href="#"><span class="icon">&#128247;</span> @yajoo</a>
+        </li>
+        <li>
+          <a href="#"><span class="icon">&#9654;</span> Yajoo</a>
+        </li>
+      </ul>
     </div>
 
-    <!-- Profile Image Block -->
-    <div class="profile-image-container">
-      <!-- Make sure 'profile.jpg' is in src/assets/ -->
-      <img src="/assets/profile.jpg" alt="Yajoo Profile" class="profile-img" />
+    <div class="footer-col graphic-col">
+      <!-- Minimalist mountain vector SVG replacing bottom right photo -->
+      <svg
+        class="mountain-graphic"
+        viewBox="0 0 100 30"
+        fill="none"
+        stroke="#c5a880"
+        stroke-width="1"
+      >
+        <polyline points="0,25 20,15 35,22 55,8 70,18 85,12 100,25" />
+      </svg>
     </div>
 
-    <!-- Copyright Notice -->
     <div class="copyright">&copy; 2024 Yajoo. All rights reserved.</div>
   </footer>
 </main>
